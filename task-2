@@ -1,0 +1,31 @@
+#temperature and humidity detection
+#include <dht.h> // Include the DHT library
+
+// Create a DHT object to interact with the sensor
+dht DHT; 
+
+// Define the pin number connected to the DHT11 sensor
+#define DHT11_PIN 7
+
+void setup() {
+  // Initialize serial communication at a baud rate of 9600
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read data from the DHT11 sensor connected to DHT11_PIN
+  int chk = DHT.read11(DHT11_PIN);
+
+  // Display the temperature reading
+  Serial.print("Temperature = ");
+  Serial.print(DHT.temperature);
+  Serial.println(" °C");
+
+  // Display the humidity reading
+  Serial.print("Humidity = ");
+  Serial.print(DHT.humidity);
+  Serial.println(" %");
+
+  // Wait for 1 second before the next reading
+  delay(1000);
+}
